@@ -1,0 +1,89 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/sync-wave: "10"
+  name: wait-for-stf-prereqs
+  namespace: {{ .Values.stf.namespace }}
+spec:
+  template:
+    spec:
+      dnsPolicy: ClusterFirst
+      activeDeadlineSeconds: 900
+      restartPolicy: OnFailure
+      serviceAccount: stf-admin-sa
+      serviceAccountName: stf-admin-sa
+      terminationGracePeriodSeconds: 60
+      containers:
+      - image: {{ .Values.job.image }}
+        imagePullPolicy: IfNotPresent
+        name: wait-for-stf-prereqs
+        env:
+          - name: SLEEP
+            value: "3"
+        command:
+        - /bin/bash
+        - -c
+        - |
+          echo "STF PreInstall Hook"
+
+          # Check OpenShift cert manager operator
+          CSV_NAME=$(oc get csv -n  cert-manager-operator | egrep cert-manager | awk '{print $1}')
+          CSV_STATUS="Pausing $SLEEP seconds..."
+          while [ "$CSV_STATUS" != "InstallSucceeded" ]; do
+            echo "Waiting for the cert mgr Operator to be ready. ($CSV_STATUS)"
+            sleep $SLEEP
+            CSV_STATUS=$( oc get csv -n cert-manager-operator $CSV_NAME -o jsonpath={..status.conditions[-1:]} | jq .| egrep reason | awk -F '"' '{print $4}' )
+          done
+
+          # Check AMQ interconnect operator
+          CSV_NAME=$(oc get csv -n  service-telemetry | egrep amq7-interconnect| awk '{print $1}')
+          CSV_STATUS="Pausing $SLEEP seconds..."
+          while [ "$CSV_STATUS" != "InstallSucceeded" ]; do
+            echo "Waiting for the AMQ7 Interconnect Operator to be ready. ($CSV_STATUS)"
+            sleep $SLEEP
+            CSV_STATUS=$( oc get csv -n service-telemetry $CSV_NAME -o jsonpath={..status.conditions[-1:]} | jq .| egrep reason | awk -F '"' '{print $4}' )
+          done
+
+          # Check cluster observability operator
+          CSV_NAME=$(oc get csv -n  service-telemetry | egrep observability-operator | awk '{print $1}')
+          CSV_STATUS="Pausing $SLEEP seconds..."
+          while [ "$CSV_STATUS" != "InstallSucceeded" ]; do
+            echo "Waiting for the Cluster Observabiity Operator to be ready. ($CSV_STATUS)"
+            sleep $SLEEP
+            CSV_STATUS=$( oc get csv -n service-telemetry $CSV_NAME -o jsonpath={..status.conditions[-1:]} | jq .| egrep reason | awk -F '"' '{print $4}' )
+          done
+
+          # Check STF operator
+          CSV_NAME=$(oc get csv -n  service-telemetry | egrep service-telemetry | awk '{print $1}')
+          CSV_STATUS="Pausing $SLEEP seconds..."
+          while [ "$CSV_STATUS" != "InstallSucceeded" ]; do
+            echo "Waiting for the service-telemetry Operator to be ready. ($CSV_STATUS)"
+            sleep $SLEEP
+            CSV_STATUS=$( oc get csv -n service-telemetry $CSV_NAME -o jsonpath={..status.conditions[-1:]} | jq .| egrep reason | awk -F '"' '{print $4}' )
+          done
+
+          # Check Smart Gateway operator
+          CSV_NAME=$(oc get csv -n  service-telemetry | egrep smart-gateway | awk '{print $1}')
+          CSV_STATUS="Pausing $SLEEP seconds..."
+          while [ "$CSV_STATUS" != "InstallSucceeded" ]; do
+            echo "Waiting for the smart-gateway Operator to be ready. ($CSV_STATUS)"
+            sleep $SLEEP
+            CSV_STATUS=$( oc get csv -n service-telemetry $CSV_NAME -o jsonpath={..status.conditions[-1:]} | jq .| egrep reason | awk -F '"' '{print $4}' )
+          done
+
+          # Wait for ODF to be ready
+          # Will check for RBD storage classs to be available
+          echo "Checking is ODF storage class is ready"
+
+          TARGET="ocs-storagecluster-ceph-rbd"
+          OCS_CLASS="Pausing $SLEEP seconds..."
+          while [ "$OCS_CLASS" != "$TARGET" ]; do
+            echo "Waiting for the OCS Storage Class to be ready. ($OCS_CLASS)"
+            sleep $SLEEP
+            OCS_CLASS=$( oc get storageclass | egrep $TARGET | awk '{print $1}' )
+          done
+
+          echo "All done! Hooray!"
+

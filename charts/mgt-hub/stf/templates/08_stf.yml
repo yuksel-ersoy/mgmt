@@ -1,0 +1,47 @@
+apiVersion: infra.watch/v1beta1
+kind: ServiceTelemetry
+metadata:
+  name: default
+  namespace: {{ .Values.stf.namespace }}
+  annotations:
+    argocd.argoproj.io/sync-wave: "35"
+spec:
+  observabilityStrategy: none
+  clouds:
+  {{- range .Values.stf.clouds }}
+  - name: {{ .name }}
+    metrics:
+      collectors:
+      - bridge:
+          ringBufferCount: 15000
+          ringBufferSize: 16384
+          verbose: false
+        collectorType: collectd
+        debugEnabled: false
+        subscriptionAddress: collectd/{{ .name }}-telemetry
+      - bridge:
+          ringBufferCount: 15000
+          ringBufferSize: 16384
+          verbose: false
+        collectorType: ceilometer
+        debugEnabled: false
+        subscriptionAddress: anycast/ceilometer/{{ .name }}-metering.sample
+      - bridge:
+          ringBufferCount: 15000
+          ringBufferSize: 16384
+          verbose: false
+        collectorType: sensubility
+        debugEnabled: false
+        subscriptionAddress: sensubility/{{ .name }}-telemetry
+  {{- end }}
+  highAvailability:
+    enabled: false
+  transports:
+    qdr:
+      auth: basic
+      certificates:
+        caCertDuration: 70080h
+        endpointCertDuration: 70080h
+      enabled: true
+      web:
+        enabled: false

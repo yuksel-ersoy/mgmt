@@ -1,0 +1,33 @@
+{{- range .Values.stf.clouds }}
+apiVersion: monitoring.rhobs/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    app: smart-gateway
+  name: default-{{ .name }}-ceil-meter
+  namespace: service-telemetry
+spec:
+  endpoints:
+  - bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+    interval: 30s
+    metricRelabelings:
+    - action: labeldrop
+      regex: pod
+    - action: labeldrop
+      regex: namespace
+    - action: labeldrop
+      regex: instance
+    - action: labeldrop
+      regex: job
+    - action: labeldrop
+      regex: publisher
+    port: prom-https
+    scheme: https
+    tlsConfig:
+      caFile: /etc/prometheus/configmaps/serving-certs-ca-bundle/service-ca.crt
+      serverName: default-{{ .name }}-ceil-meter.service-telemetry.svc
+  selector:
+    matchLabels:
+      app: smart-gateway
+      smart-gateway: default-{{ .name }}-ceil-meter
+{{- end }}

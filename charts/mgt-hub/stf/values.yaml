@@ -1,0 +1,18 @@
+mgmt_cluster_name: mgmt1
+domain: caumgmtocp.turkcell.tgc
+
+job:
+  image: registry.redhat.io/openshift4/ose-tools-rhel8:latest
+
+prom_kafka:
+  namespace: prom-kafka-adapter
+  image: telefonica/prometheus-kafka-adapter:1.8.0
+  kafka_route: mgnt-kafka-kafka-bootstrap-kafka-cluster.apps
+
+stf:
+  namespace: service-telemetry
+  clouds:
+    - name: cwlsite1
+
+cert_mgr:
+  namespace: openshift-cert-manager-operator
