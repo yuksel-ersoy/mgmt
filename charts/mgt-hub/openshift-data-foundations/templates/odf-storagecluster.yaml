@@ -64,14 +64,7 @@ spec:
     kms: {}
   externalStorage: {}
   flexibleScaling: true
-  resources:
-    mds:
-      limits:
-        cpu: "3"
-        memory: "8Gi"
-      requests:
-        cpu: "3"
-        memory: "8Gi"
+  resources: {}
   monDataDirHostPath: /var/lib/rook
   managedResources:
     cephBlockPools:
