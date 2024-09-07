@@ -155,10 +155,10 @@ clusterGroup:
     - hub
 
   applications:
-    perf-profile:
-      name: perf-profile
-      project: hub
-      path: charts/mgt-hub/perf-profile
+          #    perf-profile:
+          #      name: perf-profile
+          #      project: hub
+          #      path: charts/mgt-hub/perf-profile
 
     acm:
       name: acm
@@ -213,17 +213,17 @@ clusterGroup:
       path: charts/mgt-hub/quay
       project: hub
 
-    kafka:
-      name: kafka
-      namespace: kafka-cluster
-      path: charts/mgt-hub/kafka
-      project: hub
+      #    kafka:
+      #      name: kafka
+      #      namespace: kafka-cluster
+      #      path: charts/mgt-hub/kafka
+      #      project: hub
 
-    monitoring:
-      name: monitoring
-      namespace: prom-kafka-adapter
-      path: charts/mgt-hub/monitoring
-      project: hub
+      #    monitoring:
+      #      name: monitoring
+      #      namespace: prom-kafka-adapter
+      #      path: charts/mgt-hub/monitoring
+      #      project: hub
 
     gitops:
       name: gitops
@@ -231,28 +231,28 @@ clusterGroup:
       path: charts/mgt-hub/gitops
       project: hub
 
-    logging:
-      name: logging
-      namespace: openshift-logging
-      path: charts/mgt-hub/logging
-      project: hub
+      #    logging:
+      #      name: logging
+      #      namespace: openshift-logging
+      #      path: charts/mgt-hub/logging
+      #      project: hub
 
-    stf:
-      name: stf
-      namespace: service-telemetry
-      path: charts/mgt-hub/stf
-      project: hub
+      #    stf:
+      #      name: stf
+      #      namespace: service-telemetry
+      #      path: charts/mgt-hub/stf
+      #      project: hub
 
-    vms:
-      name: vms
-      namespace: mgmt-apps
-      project: hub
-      path: charts/mgt-hub/vm-on-bm
+      #    vms:
+      #      name: vms
+      #      namespace: mgmt-apps
+      #      project: hub
+      #      path: charts/mgt-hub/vm-on-bm
 
-    ansible:
-      name: ansible
-      path: charts/mgt-hub/ansible
-      project: hub
+      #    ansible:
+      #      name: ansible
+      #      path: charts/mgt-hub/ansible
+      #      project: hub
 
     security:
       name: security
@@ -261,15 +261,15 @@ clusterGroup:
       project: hub
 
 mgmt:
-  provisioner_ip: 10.211.210.6
-  cluster_name: caumgmtocp
-  domain: turkcell.tgc
-  dns_server_ip: 10.218.128.140,10.201.119.225
+  provisioner_ip: 192.168.63.163 
+  cluster_name: umrtestrocp
+  domain: tim.tr
+  dns_server_ip: 192.168.63.163,8.8.8.8
   apps_ns: mgmt-apps
   apps_nad_name: nad-br-apps
-  apps_subnet: 10.211.210.32
-  apps_subnet_len: 27
-  apps_subnet_gw: 10.211.210.33    
+  apps_subnet: 192.168.63.0
+  apps_subnet_len: 24
+  apps_subnet_gw: 192.168.63.1
   #
   # Variables for Ansible playbooks
   #
@@ -286,7 +286,7 @@ mgmt:
     user: admin
     ip: 10.0.42.5
     hostname: idm1mgmt1
-    ipaserver: idm1mgmt1.caumgmtocp.turkcell.tgc
+    ipaserver: idm1mgmt1.umrtestrocp.tim.tr
 
   satellite:
     qcow: rhel-8.8-x86_64-kvm.qcow2
@@ -305,12 +305,12 @@ mgmt:
     user: admin
     ip: 10.0.42.6
     hostname: git
-    git_fqdn: git.caumgmtocp.turkcell.tgc
+    git_fqdn: git.umrtestrocp.tim.tr
 
   quay:
     namespace: quay-enterprise
-    local: quay1.apps.caumgmtocp.turkcell.tgc
-    remote: quay2.apps.caumgmtocp.turkcell.tgc
+    local: quay1.apps.umrtestrocp.tim.tr
+    remote: quay2.apps.umrtestrocp.tim.tr
     component:
     - name: clair
       managed: true
@@ -340,7 +340,7 @@ mgmt:
     param:
       # Create superuser
       FEATURE_USER_INITIALIZE: true
-      SERVER_HOSTNAME: quay1.apps.caumgmtocp.turkcell.tgc
+      SERVER_HOSTNAME: quay1.apps.umrtestrocp.tim.tr
       SETUP_COMPLETE: true
       SUPER_USERS:
       - quayadmin
@@ -360,7 +360,7 @@ mgmt:
       ROBOTS_DISALLOW: false
       FEATURE_REPO_MIRROR: true
       REPO_MIRROR_INTERVAL: 30
-      REPO_MIRROR_SERVER_HOSTNAME: quay1.apps.caumgmtocp.turkcell.tgc 
+      REPO_MIRROR_SERVER_HOSTNAME: quay1.apps.umrtestrocp.tim.tr
       REPO_MIRROR_TLS_VERIFY: false
       REPO_MIRROR_ROLLBACK: true 
       PERMANENTLY_DELETE_TAGS: true
@@ -370,7 +370,7 @@ mgmt:
       TAG_EXPIRATION_OPTIONS:
       - 2w
       #SSL/TLS
-      SERVER_HOSTNAME: quay1.apps.caumgmtocp.turkcell.tgc
+      SERVER_HOSTNAME: quay1.apps.umrtestrocp.tim.tr
       #EXTERNAL_TLS_TERMINATION: false
       #PREFERRED_URL_SCHEME: https
       TESTING: false  
