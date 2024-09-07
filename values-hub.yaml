@@ -61,11 +61,11 @@ clusterGroup:
       channel: stable
       csv: kubernetes-nmstate-operator.4.14.0-202402091039
 
-    lso:
-      name: local-storage-operator
-      namespace: openshift-local-storage
-      channel: stable
-      csv: local-storage-operator.v4.14.0-202407021509
+      #    lso:
+      #      name: local-storage-operator
+      #      namespace: openshift-local-storage
+      #      channel: stable
+      #      csv: local-storage-operator.v4.14.0-202407021509
 
       #    odf:
       #      name: odf-operator
@@ -73,71 +73,71 @@ clusterGroup:
       #      channel: stable-4.14
       #      csv: odf-operator.v4.14.9-rhodf
 
-    cnv:
-      name: kubevirt-hyperconverged
-      namespace: openshift-cnv
-      channel: stable
-      csv: kubevirt-hyperconverged-operator.v4.14.4
+      #    cnv:
+      #      name: kubevirt-hyperconverged
+      #      namespace: openshift-cnv
+      #      channel: stable
+      #      csv: kubevirt-hyperconverged-operator.v4.14.4
 
-    quay:
-      name: quay-operator
-      namespace: quay-enterprise
-      channel: stable-3.11
-      csv:
-        quay-operator.v3.11.0
+      #    quay:
+      #      name: quay-operator
+      #      namespace: quay-enterprise
+      #      channel: stable-3.11
+      #      csv:
+      #        quay-operator.v3.11.0
 
         #
         # STF Operator
         #
-    cluster-observability-operator:
-      name: cluster-observability-operator
-      namespace: openshift-operators
-      channel: development
+        #    cluster-observability-operator:
+        #      name: cluster-observability-operator
+        #      namespace: openshift-operators
+        #      channel: development
 
-    openshift-cert-manager:
-      name: openshift-cert-manager-operator
-      namespace: cert-manager-operator
-      channel: stable-v1
+      #    openshift-cert-manager:
+      #      name: openshift-cert-manager-operator
+      #      namespace: cert-manager-operator
+      #      channel: stable-v1
 
-    service-telemetry:
-      name: service-telemetry-operator
-      namespace: service-telemetry
-      channel: stable-1.5
+      #    service-telemetry:
+      #      name: service-telemetry-operator
+      #      namespace: service-telemetry
+      #      channel: stable-1.5
 
-    grafana:
-      name: grafana-operator
-      namespace: service-telemetry
-      channel: v4
-      source: community-operators
+      #    grafana:
+      #      name: grafana-operator
+      #      namespace: service-telemetry
+      #      channel: v4
+      #      source: community-operators
 
 
 
         #
         # End STF operators
         #
-    kafka:
-      name: amq-streams
-      namespace: kafka-cluster
-      channel: stable
-      csv: amqstreams.v2.6.0-1
+        #    kafka:
+        #      name: amq-streams
+        #      namespace: kafka-cluster
+        #      channel: stable
+        #      csv: amqstreams.v2.6.0-1
 
-    logging:
-      namespace: openshift-logging
-      name: cluster-logging
-      channel: stable-5.9
-      source: redhat-operators
-      csv: cluster-logging.v5.9.0
+      #    logging:
+      #      namespace: openshift-logging
+      #      name: cluster-logging
+      #      channel: stable-5.9
+      #      source: redhat-operators
+      #      csv: cluster-logging.v5.9.0
 
-    talm:
-      name: topology-aware-lifecycle-manager
-      namespace: openshift-operators
-      channel: stable
+      #    talm:
+      #      name: topology-aware-lifecycle-manager
+      #      namespace: openshift-operators
+      #      channel: stable
 
-    ansible:
-      name: ansible-automation-platform-operator
-      namespace: ansible
-      source: redhat-operators
-      channel: stable-2.4
+      #    ansible:
+      #      name: ansible-automation-platform-operator
+      #      namespace: ansible
+      #      source: redhat-operators
+      #      channel: stable-2.4
 
     rhacs-operator:
       name: rhacs-operator
@@ -145,11 +145,11 @@ clusterGroup:
       source: redhat-operators
       channel: stable
 
-    osus:
-      name: cincinnati-operator
-      namespace: openshift-update-service
-      source: redhat-operators
-      channel: v1
+      #    osus:
+      #      name: cincinnati-operator
+      #      namespace: openshift-update-service
+      #      source: redhat-operators
+      #      channel: v1
 
   projects:
     - hub
