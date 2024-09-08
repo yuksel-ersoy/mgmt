@@ -16,20 +16,24 @@ metadata:
   name: local-block
   namespace: openshift-local-storage
 spec:
+  deviceInclusionSpec:
+    deviceTypes:
+      - disk
+      - part
+    minSize: 1Gi
   nodeSelector:
     nodeSelectorTerms:
       - matchExpressions:
-          - key: cluster.ocs.openshift.io/openshift-storage
+          - key: kubernetes.io/hostname
             operator: In
             values:
-              - ""
+              - openshift-worker-0.umrtestrocp.tim.tr
+              - openshift-worker-1.umrtestrocp.tim.tr
+              - openshift-worker-2.umrtestrocp.tim.tr
   storageClassName: localblock
+  tolerations:
+    - effect: NoSchedule
+      key: node.ocs.openshift.io/storage
+      operator: Equal
+      value: 'true'
   volumeMode: Block
-    #  fstype: xfs
-  maxDeviceCount: 4  # <-- Maximum number of devices per node to be used
-  deviceInclusionSpec:
-    deviceTypes:
-    - disk
-    deviceMechanicalProperties:
-    - NonRotational
-

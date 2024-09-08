@@ -64,27 +64,29 @@ spec:
     kms: {}
   externalStorage: {}
   flexibleScaling: true
-  resources:
-    mds:
-      limits:
-        cpu: "2"
-        memory: "5Gi"
-      requests:
-        cpu: "2"
-        memory: "5Gi"
-  monDataDirHostPath: /var/lib/rook
   managedResources:
-    cephBlockPools:
-      reconcileStrategy: manage   # <-- Default value is manage
+    cephBlockPools: {}
+    cephCluster: {}
     cephConfig: {}
+    cephDashboard: {}
     cephFilesystems: {}
+    cephNonResilientPools: {}
     cephObjectStoreUsers: {}
     cephObjectStores: {}
-  multiCloudGateway:
-    reconcileStrategy: manage   # <-- Default value is manage
+    cephRBDMirror: {}
+    cephToolbox: {}
+  mirroring: {}
+  monDataDirHostPath: /var/lib/rook
+  network:
+    connections:
+      encryption: {}
+    multiClusterService: {}
+  nodeTopologies: {}
   storageDeviceSets:
-  - count: 3
+  - config: {}
+    count: 3
     dataPVCTemplate:
+      metadata: {}
       spec:
         accessModes:
         - ReadWriteOnce
@@ -93,15 +95,9 @@ spec:
             storage: "1"
         storageClassName: localblock
         volumeMode: Block
-    name: ocs-deviceset
+      status: {}
+    name: ocs-deviceset-localblock
     placement: {}
-    portable: false
+    preparePlacement: {}
     replica: 1
-    resources:
-      limits:
-        cpu: "2"
-        memory: "5Gi"
-      requests:
-        cpu: "2"
-        memory: "5Gi"
-    
+    resources: {}
