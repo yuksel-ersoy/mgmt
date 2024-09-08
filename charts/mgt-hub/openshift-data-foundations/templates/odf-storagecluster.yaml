@@ -1,50 +1,62 @@
 apiVersion: ocs.openshift.io/v1
 kind: StorageCluster
 metadata:
-  namespace: {{ .Values.odf.namespace }}
+  annotations:
+    uninstall.ocs.openshift.io/cleanup-policy: delete
+    uninstall.ocs.openshift.io/mode: graceful
+  labels:
+    argocd.argoproj.io/instance: odf
   name: ocs-storagecluster
+  namespace: openshift-storage
 spec:
+  arbiter: {}
+  encryption:
+    kms: {}
+  externalStorage: {}
+  flexibleScaling: true
+  managedResources:
+    cephBlockPools:
+      reconcileStrategy: manage
+    cephCluster: {}
+    cephConfig: {}
+    cephDashboard: {}
+    cephFilesystems: {}
+    cephNonResilientPools: {}
+    cephObjectStoreUsers: {}
+    cephObjectStores: {}
+    cephRBDMirror: {}
+    cephToolbox: {}
+  mirroring: {}
+  monDataDirHostPath: /var/lib/rook
+  multiCloudGateway:
+    reconcileStrategy: manage
   resources:
-    mon:
-      requests:
-        cpu: {{ .Values.odf.mon.requests.cpu | squote }}
-        memory: {{ .Values.odf.mon.requests.memory }}
     mds:
+      limits:
+        cpu: '3'
+        memory: 8Gi
       requests:
-        cpu: {{ .Values.odf.mds.requests.cpu | squote }}
-        memory: {{ .Values.odf.mds.requests.memory }}
-    mgr:
-      requests:
-        cpu: {{ .Values.odf.mgr.requests.cpu | squote }}
-        memory: {{ .Values.odf.mgr.requests.memory }}
-    noobaa-core:
-      requests:
-        cpu: {{ .Values.odf.noobaacore.requests.cpu | squote }}
-        memory: {{ .Values.odf.noobaacore.requests.memory }}
-    noobaa-db:
-      requests:
-        cpu: {{ .Values.odf.noobaadb.requests.cpu | squote }}
-        memory: {{ .Values.odf.noobaadb.requests.memory }}
+        cpu: '3'
+        memory: 8Gi
   storageDeviceSets:
-  - name: ocs-deviceset
-    config: {}
-    count: 1
-    replica: 3
-    resources:
-      requests:
-        cpu: {{ .Values.odf.osd.requests.cpu | squote }}
-        memory: {{ .Values.odf.osd.requests.memory }}
-    placement: {}
-    preparePlacement: {}
-    dataPVCTemplate:
-      metadata: {}
-      spec:
-        storageClassName: {{ .Values.global.datacenter.storageClassName }}
-        accessModes:
-        - ReadWriteOnce
-        volumeMode: Block
-        resources:
-          requests:
-            storage: {{ .Values.odf.osd.pvc.storage }}
-      status: {}
-    portable: true
+    - count: 3
+      dataPVCTemplate:
+        spec:
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: '1'
+          storageClassName: localblock
+          volumeMode: Block
+      name: ocs-deviceset
+      placement: {}
+      portable: false
+      replica: 1
+      resources:
+        limits:
+          cpu: '2'
+          memory: 5Gi
+        requests:
+          cpu: '2'
+          memory: 5Gi
