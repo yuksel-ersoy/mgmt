@@ -18,7 +18,7 @@ toolbox:
 
 #Define the odf storageSystem parameters
 storageSystem:
-  deploy: false
+  deploy: true
   name: ocs-storagecluster-storagesystem
   namespace: openshift-storage
   spec:
