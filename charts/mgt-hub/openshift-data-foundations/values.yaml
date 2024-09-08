@@ -8,6 +8,32 @@ global:
 odf:
   jobTerminationGracePeriod: 300
   namespace: openshift-storage
+  mon:
+    requests:
+       cpu: 1
+       memory: 2Gi
+  mds:
+    requests:
+      cpu: 1
+      memory: 4Gi
+  mgr:
+    requests:
+      cpu: 1
+      memory: 3Gi
+  noobaacore:
+    requests:
+      cpu: 1
+      memory: 4Gi
+  noobaadb:
+    requests:
+      cpu: 1
+      memory: 4Gi
+  osd:
+    requests:
+      cpu: 1
+      memory: 3Gi
+    pvc:
+      storage: 100Gi
   storageClass:
     name: ocs-storagecluster-ceph-rbd
     objectStoreName: ocs-storagecluster-cephobjectstore
@@ -18,7 +44,7 @@ toolbox:
 
 #Define the odf storageSystem parameters
 storageSystem:
-  deploy: true
+  deploy: false
   name: ocs-storagecluster-storagesystem
   namespace: openshift-storage
   spec:
