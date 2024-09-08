@@ -64,14 +64,7 @@ spec:
     kms: {}
   externalStorage: {}
   flexibleScaling: true
-  resources:
-    mds:
-      limits:
-        cpu: "2"
-        memory: "5Gi"
-      requests:
-        cpu: "2"
-        memory: "5Gi"
+  resources: {}
   monDataDirHostPath: /var/lib/rook
   managedResources:
     cephBlockPools:
@@ -93,15 +86,5 @@ spec:
             storage: "1"
         storageClassName: localblock
         volumeMode: Block
-    name: ocs-deviceset
-    placement: {}
-    portable: false
-    replica: 1
-    resources:
-      limits:
-        cpu: "2"
-        memory: "5Gi"
-      requests:
-        cpu: "2"
-        memory: "5Gi"
     
+
