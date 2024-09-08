@@ -50,10 +50,10 @@ clusterGroup:
         operatorGroup: true
 
   subscriptions:
-    acm:
-      name: advanced-cluster-management
-      namespace: open-cluster-management
-      channel: release-2.10
+          #    acm:
+          #      name: advanced-cluster-management
+          #      namespace: open-cluster-management
+          #      channel: release-2.10
 
     nmstate:
       name: kubernetes-nmstate-operator
