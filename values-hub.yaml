@@ -61,17 +61,17 @@ clusterGroup:
       channel: stable
       csv: kubernetes-nmstate-operator.4.14.0-202402091039
 
-      #    lso:
-      #      name: local-storage-operator
-      #      namespace: openshift-local-storage
-      #      channel: stable
-      #      csv: local-storage-operator.v4.14.0-202407021509
+    lso:
+      name: local-storage-operator
+      namespace: openshift-local-storage
+      channel: stable
+      csv: local-storage-operator.v4.14.0-202407021509
 
-    odf:
-      name: odf-operator
-      namespace: openshift-storage
-      channel: stable-4.14
-      csv: odf-operator.v4.14.9-rhodf
+      #    odf:
+      #      name: odf-operator
+      #      namespace: openshift-storage
+      #      channel: stable-4.14
+      #      csv: odf-operator.v4.14.9-rhodf
 
       #    cnv:
       #      name: kubevirt-hyperconverged
@@ -139,11 +139,11 @@ clusterGroup:
       #      source: redhat-operators
       #      channel: stable-2.4
 
-    rhacs-operator:
-      name: rhacs-operator
-      namespace: rhacs-operator
-      source: redhat-operators
-      channel: stable
+      # rhacs-operator:
+      #      name: rhacs-operator
+      #      namespace: rhacs-operator
+      #      source: redhat-operators
+      #      channel: stable
 
       #    osus:
       #      name: cincinnati-operator
@@ -160,16 +160,16 @@ clusterGroup:
           #      project: hub
           #      path: charts/mgt-hub/perf-profile
 
-    acm:
-      name: acm
-      namespace: open-cluster-management
-      project: hub
-      path: charts/mgt-hub/acm
-      ignoreDifferences:
-        - group: internal.open-cluster-management.io
-          kind: ManagedClusterInfo
-          jsonPointers:
-            - /spec/loggingCA
+          #    acm:
+          #      name: acm
+          #      namespace: open-cluster-management
+          #      project: hub
+          #      path: charts/mgt-hub/acm
+          #      ignoreDifferences:
+          #        - group: internal.open-cluster-management.io
+          #          kind: ManagedClusterInfo
+          #          jsonPointers:
+          #            - /spec/loggingCA
 
               #drtest:
               #name: drtest
@@ -177,11 +177,11 @@ clusterGroup:
               #project: hub
               #path: charts/mgt-hub/drtest
 
-    mce:
-      name: mce
-      namespace: multicluster-engine
-      project: hub
-      path: charts/mgt-hub/mce
+          #    mce:
+          #      name: mce
+          #      namespace: multicluster-engine
+          #      project: hub
+          #      path: charts/mgt-hub/mce
 
     nmstate:
       name: nmstate-crd
@@ -195,17 +195,17 @@ clusterGroup:
       #path: charts/mgt-hub/cnv
       #project: hub
 
-    odf:
-      name: odf
-      namespace: openshift-storage
-      path: charts/mgt-hub/openshift-data-foundations
-      project: hub
+      #    odf:
+      #      name: odf
+      #      namespace: openshift-storage
+      #      path: charts/mgt-hub/openshift-data-foundations
+      #      project: hub
 
-      #lso:
-      #name: local-storage
-      #namespace: openshift-local-storage
-      #path: charts/mgt-hub/lso
-      #project: hub
+    lso:
+      name: local-storage
+      namespace: openshift-local-storage
+      path: charts/mgt-hub/lso
+      project: hub
 
       #quay:
       #      name: quay
@@ -254,11 +254,11 @@ clusterGroup:
       #      path: charts/mgt-hub/ansible
       #      project: hub
 
-    security:
-      name: security
-      namespace: stackrox
-      path: charts/mgt-hub/rhacs-central
-      project: hub
+      #    security:
+      #      name: security
+      #      namespace: stackrox
+      #      path: charts/mgt-hub/rhacs-central
+      #      project: hub
 
 mgmt:
   provisioner_ip: 192.168.63.163 
@@ -274,9 +274,9 @@ mgmt:
   # Variables for Ansible playbooks
   #
   vars_path: /root/captivemgmtcluster/playbooks/vars
-  deploy_idm: true
+  deploy_idm: false
   deploy_satellite: false
-  deploy_gitlab: true
+  deploy_gitlab: false
 
   idm:
     qcow: rhel-9.2-x86_64-kvm.qcow2
