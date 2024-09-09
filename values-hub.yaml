@@ -53,7 +53,7 @@ clusterGroup:
     acm:
       name: advanced-cluster-management
       namespace: open-cluster-management
-      channel: release-2.11.2
+      channel: release-2.11
 
     nmstate:
       name: kubernetes-nmstate-operator
