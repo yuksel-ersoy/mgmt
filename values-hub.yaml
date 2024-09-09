@@ -50,10 +50,10 @@ clusterGroup:
         operatorGroup: true
 
   subscriptions:
-    acm:
-      name: advanced-cluster-management
-      namespace: open-cluster-management
-      channel: release-2.10
+          #acm:
+          #name: advanced-cluster-management
+          #namespace: open-cluster-management
+          #channel: release-2.10
 
     nmstate:
       name: kubernetes-nmstate-operator
@@ -160,16 +160,16 @@ clusterGroup:
           #      project: hub
           #      path: charts/mgt-hub/perf-profile
 
-    acm:
-      name: acm
-      namespace: open-cluster-management
-      project: hub
-      path: charts/mgt-hub/acm
-      ignoreDifferences:
-      - group: internal.open-cluster-management.io
-        kind: ManagedClusterInfo
-        jsonPointers:
-        - /spec/loggingCA
+          #    acm:
+          #      name: acm
+          #      namespace: open-cluster-management
+          #      project: hub
+          #      path: charts/mgt-hub/acm
+          #      ignoreDifferences:
+          #      - group: internal.open-cluster-management.io
+          #        kind: ManagedClusterInfo
+          #        jsonPointers:
+          #        - /spec/loggingCA
 
               #drtest:
               #name: drtest
