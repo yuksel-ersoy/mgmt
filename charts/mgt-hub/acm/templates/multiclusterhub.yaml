@@ -6,7 +6,7 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
     {{- if kindIs "map" .Values.clusterGroup.subscriptions }}
-    installer.open-cluster-management.io/mce-subscription-spec: '{"installPlanApproval": "Manual", "source": "{{ default "redhat-operators" .Values.clusterGroup.subscriptions.acm.source }}" }'
+    installer.open-cluster-management.io/mce-subscription-spec: '{"installPlanApproval": "Auto", "source": "{{ default "redhat-operators" .Values.clusterGroup.subscriptions.acm.source }}" }'
     {{- end }}
 spec:
   availabilityConfig: High

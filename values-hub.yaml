@@ -50,10 +50,10 @@ clusterGroup:
         operatorGroup: true
 
   subscriptions:
-          #    acm:
-          #      name: advanced-cluster-management
-          #      namespace: open-cluster-management
-          #      channel: release-2.11
+    acm:
+      name: advanced-cluster-management
+      namespace: open-cluster-management
+      channel: release-2.11
 
     nmstate:
       name: kubernetes-nmstate-operator
@@ -161,10 +161,10 @@ clusterGroup:
           #      path: charts/mgt-hub/perf-profile
 
     acm:
-            #name: acm
-            #      namespace: open-cluster-management
-            #      project: hub
-            #      path: charts/mgt-hub/acm
+      name: acm
+      namespace: open-cluster-management
+      project: hub
+      path: charts/mgt-hub/acm
           #      ignoreDifferences:
           #      - group: internal.open-cluster-management.io
           #        kind: ManagedClusterInfo
@@ -177,11 +177,11 @@ clusterGroup:
       #project: hub
       #path: charts/mgt-hub/drtest
 
-      #mce:
-      #name: mce
-      #namespace: multicluster-engine
-      #project: hub
-      #path: charts/mgt-hub/mce
+    mce:
+      name: mce
+      namespace: multicluster-engine
+      project: hub
+      path: charts/mgt-hub/mce
 
     nmstate:
       name: nmstate-crd
