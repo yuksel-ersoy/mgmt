@@ -237,11 +237,11 @@ clusterGroup:
       #      path: charts/mgt-hub/logging
       #      project: hub
 
-      #    stf:
-      #      name: stf
-      #      namespace: service-telemetry
-      #      path: charts/mgt-hub/stf
-      #      project: hub
+    stf:
+      name: stf
+      namespace: service-telemetry
+      path: charts/mgt-hub/stf
+      project: hub
 
       #    vms:
       #      name: vms
