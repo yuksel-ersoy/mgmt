@@ -104,11 +104,11 @@ clusterGroup:
       #      namespace: service-telemetry
       #      channel: stable-1.5
 
-      #    grafana:
-      #      name: grafana-operator
-      #      namespace: service-telemetry
-      #      channel: v4
-      #      source: community-operators
+    grafana:
+      name: grafana-operator
+      namespace: service-telemetry
+      channel: v4
+      source: community-operators
 
 
 
