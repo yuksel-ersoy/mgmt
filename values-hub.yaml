@@ -86,23 +86,23 @@ clusterGroup:
       #      csv:
       #        quay-operator.v3.11.0
 
+     
+     # STF Operator
         #
-        # STF Operator
-        #
-        #    cluster-observability-operator:
-        #      name: cluster-observability-operator
-        #      namespace: openshift-operators
-        #      channel: development
+    cluster-observability-operator:
+      name: cluster-observability-operator
+      namespace: openshift-operators
+      channel: development
 
       #    openshift-cert-manager:
       #      name: openshift-cert-manager-operator
       #      namespace: cert-manager-operator
       #      channel: stable-v1
 
-      #    service-telemetry:
-      #      name: service-telemetry-operator
-      #      namespace: service-telemetry
-      #      channel: stable-1.5
+    service-telemetry:
+      name: service-telemetry-operator
+      namespace: service-telemetry
+      channel: stable-1.5
 
     grafana:
       name: grafana-operator
