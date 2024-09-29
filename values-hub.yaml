@@ -61,23 +61,23 @@ clusterGroup:
       channel: stable
       csv: kubernetes-nmstate-operator.4.14.0-202402091039
 
-    lso:
-      name: local-storage-operator
-      namespace: openshift-local-storage
-      channel: stable
-      csv: local-storage-operator.v4.14.0-202407021509
+        #    lso:
+        #      name: local-storage-operator
+        #      namespace: openshift-local-storage
+        #      channel: stable
+        #      csv: local-storage-operator.v4.14.0-202407021509
 
-    odf:
-      name: odf-operator
-      namespace: openshift-storage
-      channel: stable-4.14
-      csv: odf-operator.v4.14.9-rhodf
+        #    odf:
+        #      name: odf-operator
+        #      namespace: openshift-storage
+        #      channel: stable-4.14
+        #      csv: odf-operator.v4.14.9-rhodf
 
-    cnv:
-      name: kubevirt-hyperconverged
-      namespace: openshift-cnv
-      channel: stable
-      csv: kubevirt-hyperconverged-operator.v4.14.4
+        #    cnv:
+        #      name: kubevirt-hyperconverged
+        #      namespace: openshift-cnv
+        #      channel: stable
+        #      csv: kubevirt-hyperconverged-operator.v4.14.4
 
       #    quay:
       #      name: quay-operator
@@ -189,23 +189,23 @@ clusterGroup:
       path: charts/mgt-hub/nmstate
       project: hub
 
-    cnv:
-      name: kubevirt-hyperconverged
-      namespace: openshift-cnv
-      path: charts/mgt-hub/cnv
-      project: hub
+        #    cnv:
+        #      name: kubevirt-hyperconverged
+        #      namespace: openshift-cnv
+        #      path: charts/mgt-hub/cnv
+        #      project: hub
 
-    odf:
-      name: odf
-      namespace: openshift-storage
-      path: charts/mgt-hub/openshift-data-foundations
-      project: hub
+        #    odf:
+        #      name: odf
+        #      namespace: openshift-storage
+        #      path: charts/mgt-hub/openshift-data-foundations
+        #      project: hub
 
-    lso:
-      name: local-storage
-      namespace: openshift-local-storage
-      path: charts/mgt-hub/lso
-      project: hub
+        #    lso:
+        #      name: local-storage
+        #      namespace: openshift-local-storage
+        #      path: charts/mgt-hub/lso
+        #      project: hub
 
       #quay:
       #      name: quay
