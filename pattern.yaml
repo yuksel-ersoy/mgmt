@@ -1,0 +1,17 @@
+apiVersion: gitops.hybrid-cloud-patterns.io/v1alpha1
+kind: Pattern
+metadata:
+  labels:
+    app.kubernetes.io/managed-by: Helm
+  name: mgmt-gitops
+  namespace: openshift-operators
+spec:
+  clusterGroupName: hub
+  gitOpsSpec:
+    operatorChannel: latest
+    operatorSource: redhat-operators
+  gitSpec:
+    targetRepo: https://github.com/yuksel-ersoy/mgmt.git
+    targetRevision: main
+#   tokenSecret: private-git-repo-creds
+#   tokenSecretNamespace: mgmt-gitops-hub
