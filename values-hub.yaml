@@ -59,7 +59,7 @@ clusterGroup:
       name: kubernetes-nmstate-operator
       namespace: openshift-nmstate
       channel: stable
-      csv: kubernetes-nmstate-operator.4.14.0-202402091039
+      csv: kubernetes-nmstate-operator.4.16.0-202409111235
 
         #    lso:
         #      name: local-storage-operator
@@ -107,7 +107,7 @@ clusterGroup:
     grafana:
       name: grafana-operator
       namespace: service-telemetry
-      channel: v4
+      channel: v5
       source: community-operators
 
 
@@ -128,10 +128,10 @@ clusterGroup:
       #      source: redhat-operators
       #      csv: cluster-logging.v5.9.0
 
-      #    talm:
-      #      name: topology-aware-lifecycle-manager
-      #      namespace: openshift-operators
-      #      channel: stable
+    talm:
+      name: topology-aware-lifecycle-manager
+      namespace: openshift-operators
+      channel: stable
 
       #    ansible:
       #      name: ansible-automation-platform-operator
