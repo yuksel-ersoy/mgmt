@@ -165,11 +165,18 @@ clusterGroup:
       namespace: open-cluster-management
       project: hub
       path: charts/mgt-hub/acm
-          #      ignoreDifferences:
-          #      - group: internal.open-cluster-management.io
-          #        kind: ManagedClusterInfo
-          #        jsonPointers:
-          #        - /spec/loggingCA
+      ignoreDifferences:
+        - group: internal.open-cluster-management.io
+          kind: ManagedClusterInfo
+          jsonPointers:
+            - /spec/loggingCA
+              
+    acm-observability:
+      name: acm-observability
+      namespace: open-cluster-management-observability
+      project: hub
+      path: charts/mgt-hub/acm-observability
+
 
       #drtest:
       #name: drtest

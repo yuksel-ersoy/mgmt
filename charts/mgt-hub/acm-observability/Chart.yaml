@@ -1,0 +1,7 @@
+apiVersion: v2
+description: A Helm chart to configure Observability for Advanced Cluster Manager
+keywords:
+- pattern
+name: acm-observability
+version: 0.0.1
+
