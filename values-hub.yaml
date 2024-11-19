@@ -53,7 +53,7 @@ clusterGroup:
     acm:
       name: advanced-cluster-management
       namespace: open-cluster-management
-      channel: release-2.11
+      channel: release-2.12
 
     nmstate:
       name: kubernetes-nmstate-operator
@@ -61,17 +61,17 @@ clusterGroup:
       channel: stable
       csv: kubernetes-nmstate-operator.4.16.0-202409111235
 
-        #    lso:
-        #      name: local-storage-operator
-        #      namespace: openshift-local-storage
-        #      channel: stable
-        #      csv: local-storage-operator.v4.14.0-202407021509
+    lso:
+      name: local-storage-operator
+      namespace: openshift-local-storage
+      channel: stable
+      csv: local-storage-operator.v4.16.0-202410242205
 
-        #    odf:
-        #      name: odf-operator
-        #      namespace: openshift-storage
-        #      channel: stable-4.14
-        #      csv: odf-operator.v4.14.9-rhodf
+    odf:
+      name: odf-operator
+      namespace: openshift-storage
+      channel: stable-4.16
+      csv: odf-operator.v4.16.13-rhodf
 
         #    cnv:
         #      name: kubevirt-hyperconverged
@@ -202,17 +202,17 @@ clusterGroup:
         #      path: charts/mgt-hub/cnv
         #      project: hub
 
-        #    odf:
-        #      name: odf
-        #      namespace: openshift-storage
-        #      path: charts/mgt-hub/openshift-data-foundations
-        #      project: hub
+    odf:
+      name: odf
+      namespace: openshift-storage
+      path: charts/mgt-hub/openshift-data-foundations
+      project: hub
 
-        #    lso:
-        #      name: local-storage
-        #      namespace: openshift-local-storage
-        #      path: charts/mgt-hub/lso
-        #      project: hub
+    lso:
+      name: local-storage
+      namespace: openshift-local-storage
+      path: charts/mgt-hub/lso
+      project: hub
 
       #quay:
       #      name: quay
@@ -268,7 +268,7 @@ clusterGroup:
       #      project: hub
 
 mgmt:
-  provisioner_ip: 192.168.63.163 
+  provisioner_ip: 192.168.62.251 
   cluster_name: umrtestrocp
   domain: tim.tr
   dns_server_ip: 192.168.63.163,8.8.8.8
