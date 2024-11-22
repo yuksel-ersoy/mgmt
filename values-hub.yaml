@@ -53,25 +53,25 @@ clusterGroup:
     acm:
       name: advanced-cluster-management
       namespace: open-cluster-management
-      channel: release-2.12
+      channel: release-2.11
 
     nmstate:
       name: kubernetes-nmstate-operator
       namespace: openshift-nmstate
       channel: stable
-      csv: kubernetes-nmstate-operator.4.16.0-202409111235
+      csv: kubernetes-nmstate-operator.4.14.0-202411131205
 
     lso:
       name: local-storage-operator
       namespace: openshift-local-storage
       channel: stable
-      csv: local-storage-operator.v4.16.0-202410242205
+      csv: local-storage-operator.v4.14.0-202411130434
 
     odf:
       name: odf-operator
       namespace: openshift-storage
-      channel: stable-4.16
-      csv: odf-operator.v4.16.13-rhodf
+      channel: stable-4.14
+      csv: odf-operator.v4.14.12-rhodf
 
         #    cnv:
         #      name: kubevirt-hyperconverged
