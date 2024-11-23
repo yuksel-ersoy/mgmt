@@ -29,10 +29,10 @@ clusterGroup:
     - openshift-operators-redhat:
         operatorGroup: true
     # STF Namespaces
-    #    - service-telemetry:
-    #        operatorGroup: true
+    - service-telemetry:
+        operatorGroup: true
 
-          #    - cert-manager-operator:
+          #   - cert-manager-operator:
           #        operatorGroup: true
     # End of STF related namespaces
     #    - prom-kafka-adapter: #for prometheus adapter
@@ -53,13 +53,13 @@ clusterGroup:
     acm:
       name: advanced-cluster-management
       namespace: open-cluster-management
-      channel: release-2.11
+      channel: release-2.12
 
     nmstate:
       name: kubernetes-nmstate-operator
       namespace: openshift-nmstate
       channel: stable
-      csv: kubernetes-nmstate-operator.4.14.0-202411131205
+      csv: kubernetes-nmstate-operator.4.17.0-202410300036
 
       #    lso:
       #      name: local-storage-operator
