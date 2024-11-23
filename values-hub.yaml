@@ -91,7 +91,7 @@ clusterGroup:
         #
     cluster-observability-operator:
       name: cluster-observability-operator
-      namespace: openshift-operators
+      namespace: open-cluster-management-observability
       channel: development
 
       #    openshift-cert-manager:
