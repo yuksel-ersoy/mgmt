@@ -14,7 +14,7 @@ clusterGroup:
           #    - openshift-storage: #for ODF
           #        operatorGroup: true
           #- openshift-cnv: #for CNF
-          #        operatorGroup: true
+          #        operatorGroup: true 
           #    - quay-enterprise: #for quay
           #        operatorGroup: true
     #- policies
