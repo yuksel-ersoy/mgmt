@@ -29,8 +29,8 @@ clusterGroup:
     - openshift-operators-redhat:
         operatorGroup: true
     # STF Namespaces
-    - service-telemetry:
-        operatorGroup: true
+    #    - service-telemetry:
+    #        operatorGroup: true
 
           #   - cert-manager-operator:
           #        operatorGroup: true
@@ -89,10 +89,10 @@ clusterGroup:
      
      # STF Operator
         #
-    cluster-observability-operator:
-      name: cluster-observability-operator
-      namespace: open-cluster-management-observability
-      channel: development
+        #    cluster-observability-operator:
+        #      name: cluster-observability-operator
+        #      namespace: open-cluster-management-observability
+        #      channel: development
 
       #    openshift-cert-manager:
       #      name: openshift-cert-manager-operator
@@ -171,11 +171,11 @@ clusterGroup:
           jsonPointers:
             - /spec/loggingCA
               
-    acm-observability:
-      name: acm-observability
-      namespace: open-cluster-management-observability
-      project: hub
-      path: charts/mgt-hub/acm-observability
+              #    acm-observability:
+              #      name: acm-observability
+              #      namespace: open-cluster-management-observability
+              #      project: hub
+              #      path: charts/mgt-hub/acm-observability
 
 
       #drtest:
