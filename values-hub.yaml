@@ -50,10 +50,10 @@ clusterGroup:
           #        operatorGroup: true
 
   subscriptions:
-    acm:
-      name: advanced-cluster-management
-      namespace: open-cluster-management
-      channel: release-2.12
+          #acm:
+          #      name: advanced-cluster-management
+          #      namespace: open-cluster-management
+          #      channel: release-2.12
 
     nmstate:
       name: kubernetes-nmstate-operator
@@ -160,16 +160,16 @@ clusterGroup:
           #      project: hub
           #      path: charts/mgt-hub/perf-profile
 
-    acm:
-      name: acm
-      namespace: open-cluster-management
-      project: hub
-      path: charts/mgt-hub/acm
-      ignoreDifferences:
-        - group: internal.open-cluster-management.io
-          kind: ManagedClusterInfo
-          jsonPointers:
-            - /spec/loggingCA
+          #    acm:
+          #      name: acm
+          #      namespace: open-cluster-management
+          #      project: hub
+          #      path: charts/mgt-hub/acm
+          #      ignoreDifferences:
+          #        - group: internal.open-cluster-management.io
+          #          kind: ManagedClusterInfo
+          #          jsonPointers:
+          #            - /spec/loggingCA
               
               #    acm-observability:
               #      name: acm-observability
@@ -184,11 +184,11 @@ clusterGroup:
       #project: hub
       #path: charts/mgt-hub/drtest
 
-    mce:
-      name: mce
-      namespace: multicluster-engine
-      project: hub
-      path: charts/mgt-hub/mce
+          #    mce:
+          #      name: mce
+          #      namespace: multicluster-engine
+          #      project: hub
+          #      path: charts/mgt-hub/mce
 
     nmstate:
       name: nmstate-crd
@@ -268,15 +268,15 @@ clusterGroup:
       #      project: hub
 
 mgmt:
-  provisioner_ip: 192.168.62.251 
-  cluster_name: umrtestrocp
-  domain: tim.tr
-  dns_server_ip: 192.168.63.163,8.8.8.8
+  provisioner_ip: 192.168.63.20 
+  cluster_name: 3node
+  domain: example.com
+  dns_server_ip: 192.168.63.20,8.8.8.8
   apps_ns: mgmt-apps
   apps_nad_name: nad-br-apps
-  apps_subnet: 192.168.63.0
+  apps_subnet: 192.168.62.0
   apps_subnet_len: 24
-  apps_subnet_gw: 192.168.63.1
+  apps_subnet_gw: 192.168.62.1
   #
   # Variables for Ansible playbooks
   #
