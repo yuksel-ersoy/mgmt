@@ -59,7 +59,7 @@ clusterGroup:
       name: kubernetes-nmstate-operator
       namespace: openshift-nmstate
       channel: stable
-      csv: kubernetes-nmstate-operator.4.14.0-202412110104
+      csv: kubernetes-nmstate-operator.4.16.0-202412110604
 
       #    lso:
       #      name: local-storage-operator
